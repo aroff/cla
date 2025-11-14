@@ -1,0 +1,27 @@
+[package]
+name = "rustcla"
+version = "0.1.0"
+edition = "2021"
+authors = ["RustCLA Contributors"]
+description = "Critical Line Algorithm for portfolio optimization in Rust"
+license = "MIT"
+repository = "https://github.com/rustcla/rustcla"
+
+[dependencies]
+ndarray = "0.15"
+# ndarray-linalg = { version = "0.16", features = ["openblas"] }  # Temporarily disabled - requires system OpenBLAS
+thiserror = "1.0"
+proptest = "1.4"
+approx = "0.5"
+plotters = { version = "0.3", optional = true }
+
+[features]
+default = []
+plotting = ["plotters"]
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "cla_benchmark"
+harness = false

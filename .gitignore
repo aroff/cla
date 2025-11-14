@@ -1,0 +1,44 @@
+# Rust
+target/
+debug/
+release/
+*.rs.bk
+*.rlib
+*.prof*
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+*.log.*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Build artifacts
+Cargo.lock
+*.pdb
+
+# Coverage
+tarpaulin-report.html
+coverage/
+*.gcda
+*.gcno
+
+# Documentation
+target/doc/
+
+repomix-output.xml
