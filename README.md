@@ -77,10 +77,6 @@ cargo run --example basic_usage
 cargo run --example plot_frontier --features plotting
 ```
 
-## Documentation
-
-Full documentation is available at [docs.rs/rustcla](https://docs.rs/rustcla).
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -88,4 +84,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Migration from Python cvxcla
 
 This library maintains functional parity with the Python [cvxcla](https://github.com/cvxgrp/cvxcla) implementation. See the [migration guide](docs/migration_guide.md) for details on transitioning from Python to Rust.
-
