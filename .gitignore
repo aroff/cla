@@ -42,3 +42,8 @@ coverage/
 target/doc/
 
 repomix-output.xml
+
+# Development directories (kept locally but not in git)
+.specify/
+specs/
+.cursor/
