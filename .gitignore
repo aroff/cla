@@ -47,3 +47,6 @@ repomix-output.xml
 .specify/
 specs/
 .cursor/
+
+# Implementation status file (kept locally but not in git)
+IMPLEMENTATION_STATUS.md
