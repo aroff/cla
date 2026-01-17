@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# RustCLA Pre-push Hook
+# Run comprehensive checks before pushing
+
+set -e
+
+echo "🚀 Running pre-push checks..."
+echo "============================="
+
+# Check if we're in the right directory
+if [ ! -f "Cargo.toml" ]; then
+    echo "❌ Error: Run this script from the project root (rustcla directory)"
+    exit 1
+fi
+
+echo "✅ Repository structure verified"
+
+# Run full test suite
+echo ""
+echo "🧪 Running full test suite..."
+if cargo test --quiet; then
+    echo "✅ All tests passed"
+else
+    echo "❌ Tests failed. Fix the issues before pushing."
+    exit 1
+fi
+
+# Check documentation builds
+echo ""
+echo "📚 Building documentation..."
+if cargo doc --no-deps --quiet; then
+    echo "✅ Documentation built successfully"
+else
+    echo "❌ Documentation build failed. Fix the issues before pushing."
+    exit 1
+fi
+
+echo ""
+echo "🎉 All pre-push checks passed!"
+echo ""
+
+exit 0

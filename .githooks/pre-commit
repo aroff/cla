@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# RustCLA Pre-commit Hook
+# Run basic quality checks before committing
+
+set -e
+
+echo "🔍 Running pre-commit checks..."
+echo "==============================="
+
+# Check if we're in the right directory
+if [ ! -f "Cargo.toml" ]; then
+    echo "❌ Error: Run this script from the project root (rustcla directory)"
+    exit 1
+fi
+
+echo "✅ Repository structure verified"
+
+# Check code formatting
+echo ""
+echo "📝 Checking code formatting..."
+if cargo fmt --check; then
+    echo "✅ Code formatting is correct"
+else
+    echo "❌ Code formatting issues found. Run 'cargo fmt' to fix."
+    exit 1
+fi
+
+# Run clippy linting
+echo ""
+echo "🔧 Running clippy linting..."
+if cargo clippy -- -D warnings; then
+    echo "✅ Clippy checks passed"
+else
+    echo "❌ Clippy found issues. Fix the warnings before committing."
+    exit 1
+fi
+
+# Run quick unit tests
+echo ""
+echo "🧪 Running unit tests..."
+if cargo test --lib --quiet; then
+    echo "✅ Unit tests passed"
+else
+    echo "❌ Unit tests failed. Fix the issues before committing."
+    exit 1
+fi
+
+echo ""
+echo "🎉 All pre-commit checks passed!"
+echo ""
+
+exit 0
